@@ -307,8 +307,6 @@ If using the dataset in research, cite the repository and the version used. For 
 
 The underlying funding decisions should also be attributed to the **Arts Council of Ireland / An Chomhairle Ealaíon**.
 
-If the repository is later archived with Zenodo or another DOI-granting service, the DOI citation should replace or supplement the example above.
-
 ## Data provenance
 
 All underlying award information originates from the Arts Council's publicly accessible Funding Decisions database.
