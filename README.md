@@ -8,9 +8,9 @@ The committed dataset contains **2,651 individual awards** with a combined nomin
 
 ## Project context
 
-This dataset and the accompanying harvesting code were produced as part of **Minimal Curation: Minimal Computing for Sustainable Digital Sociocultural Heritage**, a project funded by **Research Ireland**. Minimal Curation investigates sustainable, accessible, and equitable approaches to digital sociocultural heritage, including the conditions under which arts and cultural organisations develop, preserve, and share digital cultural materials.
+This dataset and the accompanying harvesting code were produced as part of **Minimal Curation: Minimal Computing for Sustainable Digital Sociocultural Heritage**, funded by **Research Ireland** (COALESCE/2025/7121).
 
-The dataset supports that work by providing a structured longitudinal view of selected Arts Council funding to organisations in Ireland.
+Minimal Curation investigates sustainable, accessible, and equitable approaches to digital sociocultural heritage, including the conditions under which arts and cultural organisations develop, preserve, and share digital cultural materials. This dataset supports that work by providing a structured longitudinal view of selected Arts Council funding to organisations in Ireland.
 
 ## Repository contents
 
@@ -38,14 +38,14 @@ This repository is an independently compiled research dataset. It is not an offi
 
 ## Scope
 
-The dataset is restricted to four funding programmes that focus on organisations as opposed to individuals. This provides a consistent basis for examining patterns of institutional and organisational arts funding over time:
+The dataset is restricted to four funding programmes that focus on **organisations rather than individual-artist funding**. This provides a consistent basis for examining patterns of institutional and organisational arts funding over time:
 
 - **Arts Centre Partnership Funding**
 - **Arts Grant Funding**
 - **Strategic Funding**
 - **Festivals Investment Scheme**
 
-It covers funding decision years **2022–2027**.
+The dataset covers funding decision years **2022–2027**.
 
 ### Programme-name normalisation
 
@@ -71,7 +71,7 @@ Round numbers are therefore not represented in the final dataset.
 | --- | --- |
 | `year` | Funding decision year |
 | `fund` | Normalised funding programme |
-| `recipient` | Funded organisation or individual as published by the Arts Council |
+| `recipient` | Recipient name as published by the Arts Council |
 | `location` | Location classification published in the Arts Council database |
 | `artform` | Artform/category, with the limited normalisations documented below |
 | `amount_awarded` | Amount awarded in euro |
@@ -233,9 +233,7 @@ A future re-run of `arts-council-harvest.py` may therefore produce additional 20
 
 ### macOS
 
-Using a virtual environment is recommended, particularly with Homebrew-managed Python.
-
-From the repository directory:
+A Python virtual environment avoids modifying a Homebrew-managed Python installation:
 
 ```bash
 python3 -m venv arts-env
@@ -243,15 +241,10 @@ source arts-env/bin/activate
 python3 -m pip install --upgrade pip
 python3 -m pip install playwright
 python3 -m playwright install chromium
-```
-
-Run the scraper:
-
-```bash
 python3 arts-council-harvest.py
 ```
 
-By default this writes:
+The script writes:
 
 ```text
 arts-council-funding-2022-2027.csv
@@ -260,27 +253,21 @@ arts-council-funding-2022-2027-audit.json
 
 The CSV is the research dataset. The JSON is a reproducibility and validation record and does not form part of the tabular dataset.
 
-To watch the browser while the scraper runs:
+The browser can be shown during harvesting with:
 
 ```bash
 python3 arts-council-harvest.py --headful
 ```
 
-To specify another output path:
+A different output path can be supplied with:
 
 ```bash
 python3 arts-council-harvest.py --output data/my-harvest.csv
 ```
 
-When finished with the virtual environment:
-
-```bash
-deactivate
-```
-
 ### Linux and Windows
 
-The same Python/Playwright workflow applies, although virtual-environment activation commands differ by operating system.
+The same Python/Playwright workflow applies, with the platform-appropriate virtual-environment activation command.
 
 ## Reproducibility and versioning
 
@@ -297,15 +284,29 @@ The Arts Council's public database can change over time because of:
 
 A later execution of `arts-council-harvest.py` may therefore differ from the CSV currently committed to the repository, particularly for 2027.
 
-For reproducible research, cite the repository version, release, DOI, or Git commit corresponding to the CSV actually analysed.
+For reproducible research, analyses should cite the version of the dataset actually used. The archived dataset is available on Zenodo under the DOI below.
 
-## Suggested citation
+## Dataset citation
 
-If using the dataset in research, cite the repository and the version used. For example:
+The DOI below refers **only to the dataset**, not to the harvesting code or this GitHub repository.
 
-> O'Sullivan, James. *Arts Council of Ireland Funding Decisions, 2022–2027*. Dataset and harvesting code, 2026.
+**DOI:** [10.5281/zenodo.22830384](https://doi.org/10.5281/zenodo.22830384)
+
+Suggested citation:
+
+> O'Sullivan, James. (2026). *Arts Council of Ireland Funding Decisions, 2022–2027* [Data set]. Zenodo. https://doi.org/10.5281/zenodo.22830384
 
 The underlying funding decisions should also be attributed to the **Arts Council of Ireland / An Chomhairle Ealaíon**.
+
+## Code citation
+
+The harvesting and cleaning code is maintained in this repository as:
+
+```text
+arts-council-harvest.py
+```
+
+The Zenodo DOI above applies to the dataset only and should not be used as a DOI for the code.
 
 ## Data provenance
 
@@ -322,13 +323,24 @@ This repository:
 
 The repository does not independently verify the factual accuracy of individual Arts Council funding decisions.
 
-## Licence
+## Licences
 
-A software licence such as MIT can be applied to `arts-council-harvest.py`.
+### Code
 
-The licence attached to this repository's code does not automatically assign the same licence to the underlying Arts Council source data. Users should consult the Arts Council's terms and policies when reusing the original material.
+`arts-council-harvest.py` is licensed under the **MIT License**.
 
-If desired, the dataset and code can be assigned separate licence notices.
+Permission is granted, free of charge, to any person obtaining a copy of the software and associated documentation files to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, subject to the terms of the MIT License.
+
+### Dataset
+
+`arts-council-funding-2022-2027.csv` is licensed under the **Creative Commons Attribution 4.0 International License (CC BY 4.0)**.
+
+https://creativecommons.org/licenses/by/4.0/
+
+The CC BY 4.0 licence applies to the dataset as compiled, structured, cleaned, and curated in this repository. Underlying information originating from third-party sources may remain subject to the rights and terms applicable to those sources.
+
+The dataset DOI is:
+**10.5281/zenodo.22830384**
 
 ## Acknowledgements
 
